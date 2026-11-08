@@ -25,6 +25,12 @@ Se houver falha de armazenamento ou de leitura, a área de status apresenta o er
 
 A tela **Clientes** apresenta faturamento, clientes compradores, média por cliente, recorrência e ticket médio, além de ranking dos principais clientes e segmentação de faturamento nas faixas A–E. A tela **Produtos e preços** separa o catálogo de preços da análise de vendas: mostra faturamento, volume, produtos vendidos, pedidos, preço médio unitário, ranking de produtos e composição por categoria. Ambas permitem filtrar por período, regional e categoria; devoluções ficam excluídas por padrão e podem ser incluídas no filtro. Os resultados usam exclusivamente as linhas importadas da distrital definida.
 
+## Sugestões de contato e logística
+
+A visão geral inclui sugestões de contato baseadas no histórico importado: clientes da distrital com pelo menos 45 dias desde a última compra, priorizados por tempo e valor histórico. Clientes que já têm contato agendado nos próximos 7 dias são omitidos. Cada sugestão permite agendar uma data (padrão: 3 dias à frente) e o compromisso fica salvo na carteira local.
+
+Na área **Pedidos em carteira**, quando um pedido passa a faturado — por status do monitoramento, confirmação manual ou conciliação com a base faturada — ele entra em **Logística · aguardando mudança**. Permanece ativo até você confirmar **Confirmar mudança**, ou até completar 7 dias desde a data de faturamento; depois aparece em **Logística · mudanças concluídas**. O prazo automático é apenas uma regra de acompanhamento e **não confirma trânsito nem entrega**. As datas, a confirmação manual e o histórico ficam salvos no navegador.
+
 ## Dados e privacidade
 
 Esta é uma aplicação estática, sem backend: os dados importados permanecem no armazenamento do navegador e **não são sincronizados** entre pessoas, dispositivos ou navegadores. O próprio código do site pode estar público no GitHub Pages; não use esse arranjo como controle de acesso para uma equipe nem para informações que exijam armazenamento central protegido. Para uso compartilhado, será necessário um backend com autenticação e banco de dados.
@@ -41,7 +47,7 @@ Com as planilhas originais e o recorte da distrital:
 - Teste real no navegador: importação da base, carregamento dos indicadores, ranking e tabelas; **26.756 linhas** no histórico e nenhuma linha de outra distrital. Não foram observados erros de JavaScript.
 - Com devoluções excluídas por padrão, o recorte de teste mostrou **R$ 37.504.683,57** de faturamento, **3.213 clientes compradores**, **1.884 recorrentes**, **10.121 pedidos**, **621.881 unidades/doses** e **3.119 produtos vendidos**. Os valores variam quando a base é atualizada ou os filtros mudam.
 
-A versão filtrada ainda precisa ser testada no navegador e no endereço de publicação do usuário; esta validação foi feita localmente com os anexos.
+Os módulos de sugestões e logística passaram na verificação de sintaxe. O teste automatizado em navegador não concluiu os cliques da interface; por isso, esses dois novos fluxos ainda precisam de confirmação na sessão do usuário. A versão filtrada ainda precisa ser testada no endereço de publicação do usuário; as validações anteriores foram feitas localmente com os anexos.
 
 ## Arquivos principais
 

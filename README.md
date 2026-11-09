@@ -23,11 +23,19 @@ Se houver falha de armazenamento ou de leitura, a área de status apresenta o er
 
 ## Navegação, análises e logística
 
-A barra lateral oferece acessos diretos a **KPIs de clientes**, **KPIs de produtos** e **Logística**. As telas de análise ficam separadas da carteira de cadastro e do catálogo de preços; os indicadores dependem da importação da base faturada.
+A barra lateral oferece acessos diretos a **KPIs de clientes**, **KPIs de produtos**, **Logística** e **Dashboards e foco**. As telas de análise ficam separadas da carteira de cadastro e do catálogo de preços; os indicadores dependem da importação da base faturada.
 
 A tela **KPIs de clientes** apresenta faturamento, clientes compradores, média por cliente, recorrência e ticket médio, além de ranking dos principais clientes e segmentação de faturamento nas faixas A–E. A tela **KPIs de produtos** mostra faturamento, volume, produtos vendidos, pedidos, preço médio unitário, ranking de produtos e composição por categoria. Ambas permitem filtrar por período, regional e categoria; devoluções ficam excluídas por padrão e podem ser incluídas no filtro. Os resultados usam exclusivamente as linhas importadas da distrital definida.
 
 A tela **Recompra** permite filtrar por tempo sem comprar; “Qualquer período” inclui todos os clientes, inclusive os sem data conhecida. O marcador da faixa de recência acompanha os dias desde a última compra e fica limitado a um ano para leitura visual.
+
+## Dashboards e programas Python integrados
+
+A tela **Dashboards e foco** reúne os quatro painéis enviados. **Vendas** sincroniza com a base faturada importada no CRM e mantém o recorte das 11 regionais da Distrital Timotheo; se ainda não houver importação, mostra a base de referência incluída no painel. **Pedidos** acompanha automaticamente o monitoramento já carregado em Pedidos em carteira, sem precisar importar duas vezes. **Importações** é um painel corporativo de abastecimento e não representa dados de clientes nem é filtrado por distrital; a referência embutida é de 25/08/2026 e pode ser atualizada selecionando uma planilha no próprio painel.
+
+As duas rotinas Python enviadas foram **convertidas em recursos nativos do CRM**, pois GitHub Pages executa JavaScript no navegador, não Python. A área **Clientes foco** aplica a lógica de “Clientes foco” para o ano selecionado e combina o relatório “Clientes sem compra por regional”: mostra lista priorizada, dias sem comprar, compras acumuladas, resumos por regional/perfil/município, filtros e exportação CSV; usa somente clientes da distrital e exclui devoluções. A lista depende da base faturada carregada no CRM.
+
+Os painéis de vendas, pedidos e importações carregam bibliotecas externas de Excel/gráficos; é necessário que o navegador tenha acesso à internet e aos CDNs correspondentes. Os painéis e o CRM continuam locais no navegador: a integração não cria sincronização entre usuários.
 
 ## Sugestões de contato e logística
 
@@ -51,7 +59,9 @@ Com as planilhas originais e o recorte da distrital:
 - Teste real no navegador: importação da base, carregamento dos indicadores, ranking e tabelas; **26.756 linhas** no histórico e nenhuma linha de outra distrital. Não foram observados erros de JavaScript.
 - Com devoluções excluídas por padrão, o recorte de teste mostrou **R$ 37.504.683,57** de faturamento, **3.213 clientes compradores**, **1.884 recorrentes**, **10.121 pedidos**, **621.881 unidades/doses** e **3.119 produtos vendidos**. Os valores variam quando a base é atualizada ou os filtros mudam.
 
-Os módulos de sugestões e logística passaram na verificação de sintaxe. O teste automatizado em navegador não concluiu os cliques da interface; por isso, esses dois novos fluxos ainda precisam de confirmação na sessão do usuário. A versão filtrada ainda precisa ser testada no endereço de publicação do usuário; as validações anteriores foram feitas localmente com os anexos.
+As telas de Cashback, Promoções e importação de contatos foram testadas em navegador headless com registros controlados: conferência de 5% sobre compras elegíveis, exclusão de devoluções e de outra distrital, campanha de aniversário, importação de telefone/e-mail/data de nascimento para cliente conciliado e preservação de registro da outra distrital; sem erros de JavaScript. A planilha real de contatos ainda não foi enviada, então seu mapeamento específico depende de conferência quando for importada.
+
+A integração dos painéis foi testada no navegador com registros controlados: navegação para a nova área, lista de clientes foco, sincronização do painel de vendas após carregar a base faturada, sincronização do painel de pedidos com a carteira local e visualização móvel; sem erros de JavaScript. As importações reais, os indicadores no endereço publicado e a versão do navegador do usuário ainda precisam de confirmação após o deploy.
 
 ## Arquivos principais
 
@@ -63,6 +73,9 @@ Os módulos de sugestões e logística passaram na verificação de sintaxe. O t
 - `catalogo-inicial.js` — catálogo inicial.
 - `import-center.js` — seleção, direcionamento e confirmação das importações.
 - `crm-recency-funnel.js` — classificação por tempo sem comprar e limpeza da carteira por distrital.
+- `crm-campaigns.js` — Cashback, campanhas promocionais e importação segura de contatos.
+- `crm-dashboards.js` — navegação dos painéis e versão CRM do relatório de clientes foco.
+- `dashboards/` — painéis de vendas, pedidos e importações integrados.
 - `vendor/jszip.min.js` — biblioteca local usada para abrir e gerar arquivos Excel.
 
 A biblioteca JSZip incluída mantém o aviso de licença MIT no cabeçalho do próprio arquivo.

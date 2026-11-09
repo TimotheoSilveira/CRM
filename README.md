@@ -80,6 +80,16 @@ A integração dos painéis foi testada no navegador com registros controlados: 
 
 A biblioteca JSZip incluída mantém o aviso de licença MIT no cabeçalho do próprio arquivo.
 
+## Plano semanal por regional
+
+A nova área **Plano semanal** gera uma lista por cada uma das 11 regionais da Distrital Timotheo. Escolha a meta de **20, 25, 30, 35 ou 40 contatos por semana**; o CRM distribui a lista em cinco dias úteis, com 4 a 8 clientes por dia, e permite visualizar/baixar CSV por regional ou o consolidado.
+
+A priorização combina: (1) janela estimada de recompra pela mediana do intervalo entre pedidos faturados; (2) variação do faturamento nos últimos 30 dias contra os 30 dias anteriores, para identificar crescimento e queda que pede diagnóstico; (3) faturamento e ticket médio dos últimos 12 meses; (4) vacas cadastradas, sem inferir doses ou demanda; (5) tempo desde o último contato registrado; e (6) retornos de proposta/negociação. A pontuação, os motivos e os dados de comparação ficam visíveis para o regional. Sugestões de visita são destacadas para clientes com queda relevante de faturamento ou com sinal combinado de valor e rebanho.
+
+Para evitar abordagem duplicada, são excluídos clientes com pedido ainda ativo no monitoramento, contato de CRM já agendado dentro da semana e contato realizado nos últimos 14 dias. Se uma regional tiver menos clientes elegíveis do que a meta, a tela mostra a quantidade disponível e não preenche a lista com clientes de fora da distrital. Cada atividade pode ser registrada como visita, WhatsApp, ligação ou e-mail, planejada ou realizada, com resultado e observação. O histórico e os planos são locais ao navegador; não sincronizam automaticamente entre gerentes/regionais.
+
+A semana é organizada de segunda a sexta e não consulta feriados nem calcula rota geográfica de visitas. A estimativa de recompra usa apenas clientes com datas de pedidos suficientes para calcular um ciclo e é uma indicação comercial, não uma previsão garantida. O uso depende da importação da base faturada e do monitoramento atualizado.
+
 
 ## Identidade, comunicação e potencial de venda
 

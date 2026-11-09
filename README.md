@@ -63,6 +63,14 @@ As telas de Cashback, Promoções e importação de contatos foram testadas em n
 
 A integração dos painéis foi testada no navegador com registros controlados: navegação para a nova área, lista de clientes foco, sincronização do painel de vendas após carregar a base faturada, sincronização do painel de pedidos com a carteira local e visualização móvel; sem erros de JavaScript. As importações reais, os indicadores no endereço publicado e a versão do navegador do usuário ainda precisam de confirmação após o deploy.
 
+## Market Share
+
+A aba **Market Share** cruza as bases ASBIA × ALTA com os municípios presentes na carteira da Distrital Timotheo. A base inicial cobre **534 municípios únicos** observados nas 11 regionais da base faturada enviada. Os filtros oferecem Leite/Corte, regional e município; a tela apresenta doses ASBIA, doses Alta, share ponderado, variação em pontos percentuais, crescimento e oportunidade estimada para alcançar a referência média da área. “Ver clientes” lista os clientes vinculados àquele município e mostra suas compras na base faturada do período. O share é municipal, não individual por fazenda.
+
+Para atualizar: importe **ASBIA por Município** para renovar Jan–Set 2025/2026; importe o **Comparativo ASBIA × ALTA** mensal ou acumulado para acrescentar/atualizar o período e permitir ver cada mês. A mesma chave de período substitui a carga anterior para evitar duplicações. A tela e os dados permanecem locais ao navegador, sem sincronização entre regionais.
+
+Há uma diferença de fonte que deve ser conciliada: nos 534 municípios cobertos, o Jan–Set 2026 da base municipal totaliza **468.630 doses Alta**, enquanto “TOTAL SEM PS - ALTA” do comparativo totaliza **463.530**; o mercado ASBIA coincide em **2.471.335 doses**. A tela mantém ambas as séries como opções distintas; confirme se a diferença de **5.100 doses** está relacionada à prestação de serviço ou a outra definição antes de comparar o share como se fosse a mesma série.
+
 ## Arquivos principais
 
 - `index.html` — interface e controladores da aplicação.
@@ -75,6 +83,7 @@ A integração dos painéis foi testada no navegador com registros controlados: 
 - `crm-recency-funnel.js` — classificação por tempo sem comprar e limpeza da carteira por distrital.
 - `crm-campaigns.js` — Cashback, campanhas promocionais e importação segura de contatos.
 - `crm-dashboards.js` — navegação dos painéis e versão CRM do relatório de clientes foco.
+- `crm-market-share.js` — aba Market Share, importação mensal e vínculo municipal com clientes.
 - `dashboards/` — painéis de vendas, pedidos e importações integrados.
 - `vendor/jszip.min.js` — biblioteca local usada para abrir e gerar arquivos Excel.
 

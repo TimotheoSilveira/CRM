@@ -88,4 +88,5 @@
   function toast(msg){const el=$('toast');if(!el)return;el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2600)}
   function bind(){ensureUI();window.addEventListener('crm:sales-ready',()=>refreshData().then(()=>renderPlan()));window.addEventListener('crm:records-updated',()=>refreshData().then(()=>renderPlan()));window.addEventListener('crm:monitor-updated',()=>refreshData().then(()=>renderPlan()));window.addEventListener('storage',e=>{if([CRM_KEY,MONITOR_KEY,PLAN_KEY,ACTIVITY_KEY].includes(e.key))refreshData().then(()=>renderPlan())});document.addEventListener('click',e=>{const b=e.target.closest('[data-weekly-view="weeklyPlanView"]');if(b){e.preventDefault();e.stopPropagation();showView()}});refreshData().then(()=>renderPlan())}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});else bind();
+  if(!document.getElementById('crmMarketShareModule')){const marketScript=document.createElement('script');marketScript.id='crmMarketShareModule';marketScript.src='crm-market-share.js';document.head.appendChild(marketScript)}
 })();

@@ -119,3 +119,12 @@ A lista atual de clientes do monitoramento é atualizada a cada nova importaçã
 Na conferência das planilhas anexadas em **09/11/2026**, há **3.214 clientes únicos** na base da distrital; **52** aparecem no monitoramento, restando **3.162** para a classificação. Pelo corte de calendário de 10 meses nessa data, **957** vão para “Sem compra há mais de 10 meses” e **2.205** para “Diagnóstico”. A contagem é um retrato dessas planilhas e muda com novas importações e com a data da próxima execução.
 
 A automação roda no navegador deste CRM após importar a base faturada e atualizar o monitoramento. Importe primeiro a base faturada para reconstruir as análises e classificar a carteira; depois importe o monitoramento atual para retirar dessa classificação os clientes com pedidos em carteira. Se você arrastar manualmente um cliente automatizado para outra etapa do funil, essa escolha manual é preservada nas próximas sincronizações. Os dados continuam locais neste navegador; não é feita publicação ou sincronização com GitHub por esta rotina.
+
+
+## Funil: ranking por proposta e exportação Excel
+
+Na aba **Funil de vendas**, o seletor **Ordenar por** permite ordenar cada etapa pelo maior ou menor valor da proposta vinculada; oportunidades sem proposta ficam depois das propostas com valor. A numeração do ranking considera as oportunidades abertas visíveis pelos filtros. Cada cartão mostra o valor da proposta e o status; quando não há proposta vinculada, mostra o valor potencial da oportunidade.
+
+O botão **Exportar funil Excel** gera um `.xlsx` com as oportunidades visíveis conforme busca, regional e perfil selecionados, agrupadas por etapa e ordenadas pelo critério escolhido. Inclui posição no ranking, valor/status da proposta, valor potencial, contato e observações. A exportação é preparada localmente no navegador e pode ser compartilhada com a equipe.
+
+O XLSX exportado usa dados que já estão salvos no navegador atual. Não inclui registros de outros navegadores ou gerentes, pois o CRM não possui sincronização central.

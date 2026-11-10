@@ -121,10 +121,17 @@ Na conferência das planilhas anexadas em **09/11/2026**, há **3.214 clientes �
 A automação roda no navegador deste CRM após importar a base faturada e atualizar o monitoramento. Importe primeiro a base faturada para reconstruir as análises e classificar a carteira; depois importe o monitoramento atual para retirar dessa classificação os clientes com pedidos em carteira. Se você arrastar manualmente um cliente automatizado para outra etapa do funil, essa escolha manual é preservada nas próximas sincronizações. Os dados continuam locais neste navegador; não é feita publicação ou sincronização com GitHub por esta rotina.
 
 
-## Funil: ranking por proposta e exportação Excel
+## Exportações do funil e identidade dos PDFs
 
-Na aba **Funil de vendas**, o seletor **Ordenar por** permite ordenar cada etapa pelo maior ou menor valor da proposta vinculada; oportunidades sem proposta ficam depois das propostas com valor. A numeração do ranking considera as oportunidades abertas visíveis pelos filtros. Cada cartão mostra o valor da proposta e o status; quando não há proposta vinculada, mostra o valor potencial da oportunidade.
+Na aba **Funil de vendas**, selecione uma etapa (ou todas) e exporte as oportunidades visíveis em Excel. A planilha traz título da Distrital, etapa selecionada, resumo de quantidade e valor, classificação por valor da proposta, filtros automáticos, cabeçalho formatado e colunas congeladas. As exportações respeitam busca, regional e perfil que estiverem selecionados na tela.
 
-O botão **Exportar funil Excel** gera um `.xlsx` com as oportunidades visíveis conforme busca, regional e perfil selecionados, agrupadas por etapa e ordenadas pelo critério escolhido. Inclui posição no ranking, valor/status da proposta, valor potencial, contato e observações. A exportação é preparada localmente no navegador e pode ser compartilhada com a equipe.
+A logomarca da Distrital aparece na impressão/PDF das propostas, no PDF completo do painel de vendas e nos relatórios individuais por regional, tanto na impressão em lote quanto nos PDFs reunidos em ZIP. Os painéis de pedidos e importações não oferecem exportação própria em PDF; a identidade visual permanece no cabeçalho das páginas para impressão pelo navegador.
 
-O XLSX exportado usa dados que já estão salvos no navegador atual. Não inclui registros de outros navegadores ou gerentes, pois o CRM não possui sincronização central.
+
+## Campanhas por produto e quantidades sugeridas
+
+Na aba **Promoções específicas**, escolha **Compra de produto específico** para montar uma lista de clientes que compraram um item no período histórico selecionado (padrão: 36 meses). Selecione a janela recente de 3, 6 ou 12 meses para calcular a quantidade de referência por cliente. O filtro usa o nome do produto conforme aparece na base faturada da distrital, agrupa itens do mesmo pedido e exclui devoluções.
+
+A quantidade sugerida é a média por pedido dentro da janela recente. Se o cliente não comprou nesse intervalo, o CRM usa a média dos até três pedidos mais recentes dentro do período histórico escolhido; a tabela também informa o volume comprado, os pedidos e a base usada no cálculo. É uma indicação comercial, não uma recomendação automática de pedido.
+
+Informe a oferta no campo **Oferta / condição comercial** — por exemplo, “Colostro de R$ 310 por R$ 250” — e crie a campanha. A lista inclui contatos disponíveis e atalho de WhatsApp com mensagem preparada para revisão. **Exportar CSV** baixa a lista completa, que pode ser aberta no Excel; a tela mostra até 500 linhas por vez. Para preencher telefone e e-mail, importe os contatos dos clientes na área Clientes. O histórico precisa estar importado no mesmo navegador.
